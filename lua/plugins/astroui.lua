@@ -1,4 +1,3 @@
-
 -- AstroUI provides the basis for configuring the AstroNvim User Interface
 -- Configuration documentation can be found with `:h astroui`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
@@ -42,15 +41,14 @@ return {
         NeoTreeNormal = { bg = "none" },
         NeoTreeNormalNC = { bg = "none" },
         NeoTreeTabInactive = { bg = "none" },
-        NeoTreeTabSeperatorActive = {  fg = "#F2F3F5",bg = "none" },
-        NeoTreeTabSeperatorInactive = {  fg = "#F2F3F5",bg = "none" },
-        NvimTreeTabSeperatorActive = {  fg = "#F2F3F5",bg = "none" },
-        NvimTreeTabSeperatorInactive = {  fg = "#F2F3F5",bg = "none" },
+        NeoTreeTabSeperatorActive = { fg = "#F2F3F5", bg = "none" },
+        NeoTreeTabSeperatorInactive = { fg = "#F2F3F5", bg = "none" },
+        NvimTreeTabSeperatorActive = { fg = "#F2F3F5", bg = "none" },
+        NvimTreeTabSeperatorInactive = { fg = "#F2F3F5", bg = "none" },
         MiniTabLineFill = { fg = "#F2F3F5", bg = "none" },
-        NeoTreeWinSeparator = {fg = "#1484b8", bg = "none" },
-        NeoTreeStatusLine = {fg = "#1484b8", bg = "none" },
-        NeoTreeStatusLineNC =  {fg = "#1484b8", bg = "none" },
-
+        NeoTreeWinSeparator = { fg = "#1484b8", bg = "none" },
+        NeoTreeStatusLine = { fg = "#1484b8", bg = "none" },
+        NeoTreeStatusLineNC = { fg = "#1484b8", bg = "none" },
 
         -- Spectre
         DiffChange = { fg = "#F2F3F5", bg = "#050a30" },
@@ -68,7 +66,8 @@ return {
         TabLineSel = { bg = "none" },
         TabLineFill = { bg = "none" },
         -- Cursor
-        CursorLineNr = { bg = "none" },
+        LineNr = { fg = "#1484b8", bg = "none" },
+        CursorLineNr = { bg = "#1484b8" },
         CursorLine = { bg = "none" },
         ColorColumn = { bg = "none" },
         -- Search
