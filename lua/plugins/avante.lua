@@ -4,33 +4,13 @@ return {
   lazy = false,
   version = false, -- set this if you want to always pull the latest change
   opts = {
-    -- add any opts here
-    provider = "ollama",
-    vendors = {
-      ---@type AvanteProvider
-      ollama = {
-        ["local"] = true,
-        endpoint = "127.0.0.1:11434/v1",
-        model = "deepseek-coder-v2",
-        parse_curl_args = function(opts, code_opts)
-          return {
-            url = opts.endpoint .. "/chat/completions",
-            headers = {
-              ["Accept"] = "application/json",
-              ["Content-Type"] = "application/json",
-            },
-            body = {
-              model = opts.model,
-              messages = require("avante.providers").copilot.parse_message(code_opts), -- you can make your own message, but this is very advanced
-              max_tokens = 2048,
-              stream = true,
-            },
-          }
-        end,
-        parse_response_data = function(data_stream, event_state, opts)
-          require("avante.providers").openai.parse_response(data_stream, event_state, opts)
-        end,
-      },
+    provider = "openai", -- Recommend using Claude
+    -- auto_suggestions_provider = "claude", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
+    openai = {
+      endpoint = "https://api.proxyapi.ru/openai/v1",
+      model = "gpt-4o-mini",
+      temperature = 0,
+      max_tokens = 4096,
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
