@@ -11,8 +11,6 @@ return {
     opts.source_selector = {
       selector = false,
     }
-  end,
-  config = function()
     require("neo-tree").setup {
       commands = {
         copy_selector = function(state)
