@@ -33,7 +33,7 @@ return {
           prompt = "> #git:staged\n\nНапишите сообщение о фиксации изменения с соглашением о фиксации. Убедитесь, что заголовок содержит не более 50 символов, а длина сообщения — 72 символа. Оберните все сообщение в блок кода с помощью языка gitcommit.",
         },
         TestJest = {
-          prompt = "напиши юнит тесты со всеми крайними случаями, не используй describe, не используй циклы для тест кексов, мокай все хуки, компоненты из shared по возможности не мотай, проверь данные из примера. Для JSX компонентов используй enzyme, хуки вызывай через render hook, jest.mock используй с 2 аргументами с созданием моков в переменных их используй для проверки",
+          prompt = "Напиши юнит тесты, используй test(), Добавь все крайнее случаи, Не используй describe, Не мокай // Mock styled components, Не используй циклы для тест кейсов, Для JSX компонентов используй enzyme, хуки вызывай через render hook, Мокай все импорты Пример мока const mockUseHasShowUserAccess = jest.fn();jest.mock('entities/user-access/hooks', () => ({useHasShowUserAccess: () => mockUseHasShowUserAccess(),}));mutation const mockMutate = jest.fn();jest.mock('entities/application-transport/hooks', () => ({useApplicationDcReject: () => ({mutate: (data: { applicationId: number; data: FormData },option: { onSuccess: () => void }) => mockMutate(data, option),}),})); form: FormInstance let mockForm: FormInstance;beforeEach(() => {const { result } = renderHook(() => Form.useForm());mockForm = result.current[0];});",
           description = "My custom Jest test prompt",
         },
       },
