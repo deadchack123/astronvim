@@ -8,8 +8,11 @@ if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
-  { import = "astrocommunity.recipes.heirline-mode-text-statusline" },
-  { import = "astrocommunity.colorscheme.catppuccin" },
+  -- { import = "astrocommunity.recipes.heirline-mode-text-statusline" },
+  -- { import = "astrocommunity.colorscheme.catppuccin" },
+  -- { import = "astrocommunity.utility.noice-nvim" },
+  -- { import = "astrocommunity.completion.avante-nvim" },
+  -- { import = "astrocommunity.pack.typescript" },
 
   -- import/override with your plugins folder
 }
