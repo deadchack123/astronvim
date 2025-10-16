@@ -17,14 +17,21 @@ return {
             ":bnext<CR>",
             desc = "Next tab",
           },
-          ["gd"] = {
+          ["tgd"] = {
             ":TSToolsGoToSourceDefinition<CR>",
             desc = "Go to sourse definition TS",
           },
-
-          ["gf"] = {
+          ["tgf"] = {
             ":TSToolsFileReferences<CR>",
             desc = "Go to File References TS",
+          },
+          ["tgi"] = {
+            ":TSToolsOrganizeImports<CR>",
+            desc = "Sorts and removes unused imports",
+          },
+          ["tga"] = {
+            ":TSToolsFixAll<CR>",
+            desc = "Fixes all fixable errors",
           },
           -- TSToolsFileReferences
           -- tables with just a `desc` key will be registered with which-key if it's installed
