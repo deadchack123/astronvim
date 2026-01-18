@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- Customize Mason
 
 ---@type LazySpec
@@ -11,24 +9,28 @@ return {
     opts = {
       -- Make sure to use the names found in `:Mason`
       ensure_installed = {
-        -- install language servers
+        -- Language Servers
         "lua-language-server",
+        "html-lsp",             -- HTML LSP (правильное название)
+        "css-lsp",              -- CSS LSP (правильное название)
+        "pyright",
+        "json-lsp",             -- JSON LSP (правильное название)
+        "yaml-language-server", -- YAML LSP (правильное название)
+        "eslint-lsp",           -- ESLint LSP (правильное название)
 
-        -- install formatters
+        -- Formatters
         "stylua",
+        "prettierd",            -- Fast Prettier daemon
+        "prettier",             -- Fallback
 
-        -- install debuggers
+        -- Linters
+        "markdownlint",         -- Markdown linting
+
+        -- Debuggers
         "debugpy",
 
-        -- install any other package
+        -- Tools
         "tree-sitter-cli",
-
-        -- "ts_ls",
-        "html",
-        "cssls",
-
-        "lua_ls",
-        "pyright",
       },
       -- handlers = {
       --   function(server_name)

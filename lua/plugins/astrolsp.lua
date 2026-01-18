@@ -28,9 +28,13 @@ return {
       },
       disabled = { -- disable formatting capabilities for the listed language servers
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
-        -- "lua_ls",
+        "lua_ls",    -- Lua (stylua via none-ls)
+        "html",      -- HTML (prettier via none-ls)
+        "cssls",     -- CSS (prettier via none-ls)
+        "jsonls",    -- JSON (prettier via none-ls)
+        "yamlls",    -- YAML (prettier via none-ls)
       },
-      timeout_ms = 1000, -- default format timeout
+      timeout_ms = 3000, -- increased for large files
       -- filter = function(client) -- fully override the default formatting function
       --   return true
       -- end
@@ -51,6 +55,26 @@ return {
 
       -- Отключаем ts_ls, используем typescript-tools.nvim
       ts_ls = false,
+
+      -- ESLint LSP configuration
+      eslint = function(_, opts)
+        require("lspconfig").eslint.setup({
+          on_attach = function(client, bufnr)
+            -- Disable formatting (prettier handles this)
+            client.server_capabilities.documentFormattingProvider = false
+
+            -- Auto-fix on save
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              buffer = bufnr,
+              command = "EslintFixAll",
+            })
+          end,
+          settings = {
+            workingDirectory = { mode = "auto" },
+            format = false,  -- Don't use ESLint for formatting
+          }
+        })
+      end,
 
       -- the key is the server that is being setup with `lspconfig`
       -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server

@@ -12,6 +12,11 @@ return {
     config = function()
       require("typescript-tools").setup {
         -- handlers = handlers,
+        on_attach = function(client, bufnr)
+          -- Disable formatting (none-ls handles this via prettier)
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+        end,
         settings = {
           separate_diagnostic_server = false,
           -- mirror of VSCode's `typescript.suggest.completeFunctionCalls`

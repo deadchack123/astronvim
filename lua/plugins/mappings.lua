@@ -37,6 +37,21 @@ return {
             function() require("telescope").extensions.live_grep_args.live_grep_args() end,
             desc = "Live grep with args",
           },
+
+          -- Formatting and linting
+          ["<Leader>lf"] = {
+            function() vim.lsp.buf.format({ async = true }) end,
+            desc = "Format buffer",
+          },
+          ["<Leader>la"] = {
+            "<cmd>EslintFixAll<CR>",
+            desc = "ESLint fix all",
+          },
+          ["<Leader>ln"] = {
+            "<cmd>NullLsInfo<CR>",
+            desc = "None-ls info",
+          },
+
           -- TSToolsFileReferences
           -- tables with just a `desc` key will be registered with which-key if it's installed
           -- this is useful for naming menus

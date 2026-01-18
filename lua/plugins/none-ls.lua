@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- Customize None-ls sources
 
 ---@type LazySpec
@@ -7,7 +5,7 @@ return {
   "nvimtools/none-ls.nvim",
   opts = function(_, opts)
     -- opts variable is the default configuration table for the setup function call
-    -- local null_ls = require "null-ls"
+    local null_ls = require "null-ls"
 
     -- Check supported formatters and linters
     -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/formatting
@@ -16,9 +14,39 @@ return {
     -- Only insert new sources, do not replace the existing ones
     -- (If you wish to replace, use `opts.sources = {}` instead of the `list_insert_unique` function)
     opts.sources = require("astrocore").list_insert_unique(opts.sources, {
-      -- Set a formatter
-      -- null_ls.builtins.formatting.stylua,
-      -- null_ls.builtins.formatting.prettier,
+      -- JavaScript/TypeScript/JSON/YAML/CSS/HTML formatting
+      null_ls.builtins.formatting.prettierd.with({
+        filetypes = {
+          "javascript", "javascriptreact",
+          "typescript", "typescriptreact",
+          "vue", "css", "scss", "less",
+          "html", "json", "jsonc", "yaml",
+          "markdown", "markdown.mdx", "graphql"
+        },
+      }),
+
+      -- Lua formatting
+      null_ls.builtins.formatting.stylua,
+
+      -- Markdown linting (с отключенными раздражающими правилами)
+      null_ls.builtins.diagnostics.markdownlint.with({
+        extra_args = {
+          "--disable", "MD013", -- line length
+          "--disable", "MD022", -- blanks around headings
+          "--disable", "MD026", -- trailing punctuation in heading
+          "--disable", "MD032", -- blanks around lists
+          "--disable", "MD033", -- inline HTML
+          "--disable", "MD040", -- fenced code language
+          "--disable", "MD041", -- first line heading
+          "--disable", "MD012", -- multiple blank lines
+          "--disable", "MD024", -- duplicate headings
+          "--disable", "MD031", -- blanks around fences
+          "--disable", "MD047", -- single trailing newline
+        },
+      }),
+
+      -- Code Actions
+      null_ls.builtins.code_actions.gitsigns,
     })
   end,
 }
