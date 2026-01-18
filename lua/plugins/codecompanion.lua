@@ -108,16 +108,11 @@ Write comprehensive unit tests for this code:
 ```]] .. context.filetype .. "\n" .. text .. [[```
 
 IMMEDIATE ACTIONS:
-1. Use @{file_search} to find: .cursor/rules/test.mdc, package.json, tsconfig.json
-2. Use @{read_file} on those files to understand test framework and style
-3. Use @{grep_search} to find existing test files and patterns
-4. Use @{create_file} to create test file
-5. Use @{cmd_runner} to run:
-   - npx eslint <path>
-   - npx tsc --noEmit <path>
-   - yarn test:unit <path>
-6. Use @{insert_edit_into_file} to fix any errors
-7. Repeat steps 5-6 until all pass
+1. Use @{file_search} to find: .cursor/rules/test.mdc 
+2. Use @{read_file} and read all file on this file to understand test style
+3. Use @{create_file} to create test file
+4. Write test use rules 
+5. check test style
 
 COVERAGE: Happy path ✅ | Edge cases ❌ | Errors 🚨 | Async ⏱️
 

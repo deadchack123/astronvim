@@ -33,6 +33,10 @@ return {
             ":TSToolsFixAll<CR>",
             desc = "Fixes all fixable errors",
           },
+          ["<Leader>fg"] = {
+            function() require("telescope").extensions.live_grep_args.live_grep_args() end,
+            desc = "Live grep with args",
+          },
           -- TSToolsFileReferences
           -- tables with just a `desc` key will be registered with which-key if it's installed
           -- this is useful for naming menus
