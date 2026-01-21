@@ -15,35 +15,33 @@ return {
     -- (If you wish to replace, use `opts.sources = {}` instead of the `list_insert_unique` function)
     opts.sources = require("astrocore").list_insert_unique(opts.sources, {
       -- JavaScript/TypeScript/JSON/YAML/CSS/HTML formatting
-      null_ls.builtins.formatting.prettierd.with({
+      null_ls.builtins.formatting.prettierd.with {
         filetypes = {
-          "javascript", "javascriptreact",
-          "typescript", "typescriptreact",
-          "vue", "css", "scss", "less",
-          "html", "json", "jsonc", "yaml",
-          "markdown", "markdown.mdx", "graphql"
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+          "vue",
+          "css",
+          "scss",
+          "less",
+          "html",
+          "json",
+          "jsonc",
+          "yaml",
+          "markdown",
+          "markdown.mdx",
+          "graphql",
         },
-      }),
+      },
 
       -- Lua formatting
       null_ls.builtins.formatting.stylua,
 
       -- Markdown linting (с отключенными раздражающими правилами)
-      null_ls.builtins.diagnostics.markdownlint.with({
-        extra_args = {
-          "--disable", "MD013", -- line length
-          "--disable", "MD022", -- blanks around headings
-          "--disable", "MD026", -- trailing punctuation in heading
-          "--disable", "MD032", -- blanks around lists
-          "--disable", "MD033", -- inline HTML
-          "--disable", "MD040", -- fenced code language
-          "--disable", "MD041", -- first line heading
-          "--disable", "MD012", -- multiple blank lines
-          "--disable", "MD024", -- duplicate headings
-          "--disable", "MD031", -- blanks around fences
-          "--disable", "MD047", -- single trailing newline
-        },
-      }),
+      null_ls.builtins.diagnostics.markdownlint.with {
+        extra_args = { "--disable", "all", "--set", "rules.MD013.line_length=999" },
+      },
 
       -- Code Actions
       null_ls.builtins.code_actions.gitsigns,

@@ -5,10 +5,118 @@ return {
     opts = {
       mappings = {
         -- first key is the mode
+        v = {
+          ['"'] = {
+            function()
+              local keys = vim.api.nvim_replace_termcodes('S"', true, false, true)
+              vim.api.nvim_feedkeys(keys, "m", false)
+            end,
+            desc = "Surround selection with double quotes",
+          },
+
+          ["'"] = {
+            function()
+              local keys = vim.api.nvim_replace_termcodes("S'", true, false, true)
+              vim.api.nvim_feedkeys(keys, "m", false)
+            end,
+            desc = "Surround selection with single quotes",
+          },
+
+          ["`"] = {
+            function()
+              local keys = vim.api.nvim_replace_termcodes("S`", true, false, true)
+              vim.api.nvim_feedkeys(keys, "m", false)
+            end,
+            desc = "Surround selection with backticks",
+          },
+          ["("] = {
+            function()
+              local keys = vim.api.nvim_replace_termcodes("S(", true, false, true)
+              vim.api.nvim_feedkeys(keys, "m", false)
+            end,
+            desc = "Surround selection with ()",
+          },
+
+          ["{"] = {
+            function()
+              local keys = vim.api.nvim_replace_termcodes("S{", true, false, true)
+              vim.api.nvim_feedkeys(keys, "m", false)
+            end,
+            desc = "Surround selection with {}",
+          },
+
+          ["["] = {
+            function()
+              local keys = vim.api.nvim_replace_termcodes("S[", true, false, true)
+              vim.api.nvim_feedkeys(keys, "m", false)
+            end,
+            desc = "Surround selection with []",
+          },
+
+          ["<"] = {
+            function()
+              local keys = vim.api.nvim_replace_termcodes("S<", true, false, true)
+              vim.api.nvim_feedkeys(keys, "m", false)
+            end,
+            desc = "Surround selection with <>",
+          },
+        },
         n = {
           -- second key is the lefthand side of the map
           -- mappings seen under group name "Buffer"
           -- ["<Leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
+          ["<Leader>("] = {
+            function()
+              local keys = vim.api.nvim_replace_termcodes("ysiw(", true, false, true)
+              vim.api.nvim_feedkeys(keys, "m", false)
+            end,
+            desc = "Surround word with ()",
+          },
+
+          ["<Leader>{"] = {
+            function()
+              local keys = vim.api.nvim_replace_termcodes("ysiw{", true, false, true)
+              vim.api.nvim_feedkeys(keys, "m", false)
+            end,
+            desc = "Surround word with {}",
+          },
+
+          ["<Leader>["] = {
+            function()
+              local keys = vim.api.nvim_replace_termcodes("ysiw[", true, false, true)
+              vim.api.nvim_feedkeys(keys, "m", false)
+            end,
+            desc = "Surround word with []",
+          },
+
+          ["<Leader><"] = {
+            function()
+              local keys = vim.api.nvim_replace_termcodes("ysiw<", true, false, true)
+              vim.api.nvim_feedkeys(keys, "m", false)
+            end,
+            desc = "Surround word with <>",
+          },
+          ['<Leader>"'] = {
+            function()
+              local keys = vim.api.nvim_replace_termcodes('ysiw"', true, false, true)
+              vim.api.nvim_feedkeys(keys, "m", false) -- "m" = с учетом маппингов (remap)
+            end,
+            desc = "Surround word with double quotes",
+          },
+          ["<Leader>'"] = {
+            function()
+              local keys = vim.api.nvim_replace_termcodes("ysiw'", true, false, true)
+              vim.api.nvim_feedkeys(keys, "m", false)
+            end,
+            desc = "Surround word with single quotes",
+          },
+          ["<Leader>`"] = {
+            function()
+              local keys = vim.api.nvim_replace_termcodes("ysiw`", true, false, true)
+              vim.api.nvim_feedkeys(keys, "m", false)
+            end,
+            desc = "Surround word with backticks",
+          },
           ["<S-Tab>"] = {
             ":bprev<CR>",
             desc = "Prev tab",
@@ -40,7 +148,7 @@ return {
 
           -- Formatting and linting
           ["<Leader>lf"] = {
-            function() vim.lsp.buf.format({ async = true }) end,
+            function() vim.lsp.buf.format { async = true } end,
             desc = "Format buffer",
           },
           ["<Leader>la"] = {
