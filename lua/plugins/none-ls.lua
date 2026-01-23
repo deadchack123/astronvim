@@ -38,11 +38,6 @@ return {
       -- Lua formatting
       null_ls.builtins.formatting.stylua,
 
-      -- Markdown linting (с отключенными раздражающими правилами)
-      null_ls.builtins.diagnostics.markdownlint.with {
-        extra_args = { "--disable", "all", "--set", "rules.MD013.line_length=999" },
-      },
-
       -- Code Actions
       null_ls.builtins.code_actions.gitsigns,
     })

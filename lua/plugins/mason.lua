@@ -11,20 +11,20 @@ return {
       ensure_installed = {
         -- Language Servers
         "lua-language-server",
-        "html-lsp",             -- HTML LSP (правильное название)
-        "css-lsp",              -- CSS LSP (правильное название)
+        "html-lsp", -- HTML LSP (правильное название)
+        "css-lsp", -- CSS LSP (правильное название)
         "pyright",
-        "json-lsp",             -- JSON LSP (правильное название)
+        "json-lsp", -- JSON LSP (правильное название)
         "yaml-language-server", -- YAML LSP (правильное название)
-        "eslint-lsp",           -- ESLint LSP (правильное название)
+        "eslint-lsp", -- ESLint LSP (правильное название)
 
         -- Formatters
         "stylua",
-        "prettierd",            -- Fast Prettier daemon
-        "prettier",             -- Fallback
+        "prettierd", -- Fast Prettier daemon
+        "prettier", -- Fallback
 
         -- Linters
-        "markdownlint",         -- Markdown linting
+        -- "markdownlint",         -- Markdown linting
 
         -- Debuggers
         "debugpy",

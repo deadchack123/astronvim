@@ -34,17 +34,15 @@ return {
       },
       -- Блоки кода
       code = {
-        -- Включить рендеринг блоков кода
         enabled = true,
-        -- Иконка перед блоком кода
-        icon = "󰘦 ",
-        -- Стиль: full (с рамкой), language (только название языка), none
         style = "full",
-        -- Позиция названия языка: left, right
-        position = "left",
         width = "block",
+        position = "left",
         left_pad = 2,
         right_pad = 2,
+
+        sign = false, -- ✅ убирает дубли (иконка в signcolumn)
+        language_name = true, --
       },
       -- Горизонтальные линии
       dash = {
@@ -87,7 +85,35 @@ return {
     },
     config = function(_, opts)
       require("render-markdown").setup(opts)
+      local function set_pastel()
+        -- Заголовки: пастельный текст + очень мягкий фон
+        vim.api.nvim_set_hl(0, "RenderMarkdownH1", { fg = "#A6C8FF", bold = true })
+        vim.api.nvim_set_hl(0, "RenderMarkdownH2", { fg = "#B8E0D2", bold = true })
+        vim.api.nvim_set_hl(0, "RenderMarkdownH3", { fg = "#FFD6A5", bold = true })
+        vim.api.nvim_set_hl(0, "RenderMarkdownH4", { fg = "#E7C6FF", bold = true })
+        vim.api.nvim_set_hl(0, "RenderMarkdownH5", { fg = "#FFAFCC", bold = true })
+        vim.api.nvim_set_hl(0, "RenderMarkdownH6", { fg = "#CDEAC0", bold = true })
 
+        -- ФОН заголовков — полностью прозрачный
+        vim.api.nvim_set_hl(0, "RenderMarkdownH1Bg", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "RenderMarkdownH2Bg", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "RenderMarkdownH3Bg", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "RenderMarkdownH4Bg", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "RenderMarkdownH5Bg", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "RenderMarkdownH6Bg", { bg = "NONE" })
+
+        -- Код — без “плашек”
+        vim.api.nvim_set_hl(0, "RenderMarkdownCode", { link = "Normal" })
+        vim.api.nvim_set_hl(0, "RenderMarkdownCodeInline", { link = "Comment" })
+      end
+
+      -- применить сейчас
+      set_pastel()
+
+      -- и применять заново после смены темы (очень важно в AstroNvim)
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        callback = set_pastel,
+      })
       -- Горячие клавиши для переключения рендеринга
       vim.keymap.set("n", "<Leader>tm", "<cmd>RenderMarkdown toggle<CR>", {
         desc = "Toggle Markdown rendering",
