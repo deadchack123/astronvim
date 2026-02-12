@@ -24,6 +24,7 @@ return {
         extensions = {
           live_grep_args = {
             auto_quoting = true,
+            prompt_title = "Grep │ C-k \"\" │ C-g -g src/** -g !*.test.* │ C-t -t ts -t js │ C-f literal",
             layout_config = {
               prompt_position = "top",
               width = 0.95,
@@ -36,6 +37,7 @@ return {
                 ["<C-k>"] = lga_actions.quote_prompt(),
                 ["<C-g>"] = lga_actions.quote_prompt({ postfix = " -g " }),
                 ["<C-t>"] = lga_actions.quote_prompt({ postfix = " -t " }),
+                ["<C-f>"] = lga_actions.quote_prompt({ postfix = " -F" }),
               },
             },
           },
