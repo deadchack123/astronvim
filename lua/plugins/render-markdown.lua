@@ -85,6 +85,23 @@ return {
     },
     config = function(_, opts)
       require("render-markdown").setup(opts)
+
+      vim.keymap.set("n", "<Leader>tw", function()
+        vim.opt_local.wrap = not vim.opt_local.wrap:get()
+        vim.opt_local.linebreak = true -- чтобы слова не резались пополам
+        print("Wrap: " .. (vim.opt_local.wrap:get() and "ON" or "OFF"))
+      end, { desc = "Toggle line wrap" })
+
+      vim.keymap.set("n", "<Leader>tt", function()
+        local line = vim.api.nvim_get_current_line()
+        if line:match "%[% %]" then
+          line = line:gsub("%[% %]", "[x]", 1)
+        elseif line:match "%[x%]" then
+          line = line:gsub("%[x%]", "[ ]", 1)
+        end
+        vim.api.nvim_set_current_line(line)
+      end, { desc = "Toggle checkbox" })
+
       local function set_pastel()
         -- Заголовки: пастельный текст + очень мягкий фон
         vim.api.nvim_set_hl(0, "RenderMarkdownH1", { fg = "#A6C8FF", bold = true })
