@@ -17,14 +17,15 @@ return {
         "json-lsp", -- JSON LSP (правильное название)
         "yaml-language-server", -- YAML LSP (правильное название)
         "eslint-lsp", -- ESLint LSP (правильное название)
+        "dockerfile-language-server",
+        "docker-compose-language-service",
 
         -- Formatters
         "stylua",
         "prettierd", -- Fast Prettier daemon
-        "prettier", -- Fallback
 
         -- Linters
-        -- "markdownlint",         -- Markdown linting
+        "ruff", -- Python LSP: линт + формат + сортировка импортов
 
         -- Debuggers
         "debugpy",

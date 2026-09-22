@@ -1,12 +1,12 @@
 return {
   "vim-test/vim-test",
-  dependencies = {
-    "preservim/vimux",
+  dependencies = { "preservim/vimux" },
+  keys = {
+    { "<Leader>Tt", "<cmd>TestNearest<cr>", desc = "Test nearest" },
+    { "<Leader>TT", "<cmd>TestFile<cr>", desc = "Test file" },
+    { "<Leader>Ta", "<cmd>TestSuite<cr>", desc = "Test suite" },
+    { "<Leader>Tl", "<cmd>TestLast<cr>", desc = "Test last" },
+    { "<Leader>Tg", "<cmd>TestVisit<cr>", desc = "Visit test file" },
   },
-  vim.keymap.set("n", "<leader>Tt", ":TestNearest<CR>"),
-  vim.keymap.set("n", "<leader>TT", ":TestFile<CR>"),
-  vim.keymap.set("n", "<leader>Ta", ":TestSuite<CR>"),
-  vim.keymap.set("n", "<leader>Tl", ":TestLast<CR>"),
-  vim.keymap.set("n", "<leader>Tg", ":TestVisit<CR>"),
-  vim.cmd "let test#strategy = 'vimux'",
+  init = function() vim.g["test#strategy"] = "vimux" end,
 }
